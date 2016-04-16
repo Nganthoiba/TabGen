@@ -19,12 +19,13 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import ListenerClasses.DownloadListeners;
 import readData.ReadFile;
 
 /**
  * Created by SALAI on 2/17/2016.
  */
-public class DownloadFiles extends AsyncTask<String,String,String>{
+public class DownloadFiles extends AsyncTask<String,String,String> implements DownloadListeners{
     URL api_url;
     HttpURLConnection conn;
     public Context context;
@@ -33,6 +34,25 @@ public class DownloadFiles extends AsyncTask<String,String,String>{
     String TokenId;
     private ProgressDialog mProgressDialog;
     public String file_name=null;
+    DownloadListeners downloadListeners;
+
+    public DownloadFiles(String url_path,Context _context,String token_id,DownloadListeners downloadListeners){
+        try{
+            this.downloadListeners=downloadListeners;
+            api_url = new URL(url_path);
+            context = _context;
+            TokenId = token_id;
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            mProgressDialog = new ProgressDialog(context);
+            mProgressDialog.setMessage("Downloading file..");
+            mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            mProgressDialog.setCancelable(false);
+        }catch(Exception e){
+            System.out.println("Unable to set URL in DownloadFiles constructor: "+e.toString());
+        }
+    }
+
 
     public DownloadFiles(String url_path,Context _context,String token_id){
         try{
@@ -112,6 +132,7 @@ public class DownloadFiles extends AsyncTask<String,String,String>{
 
     protected void onProgressUpdate(String... progress) {
         Log.d("ANDRO_ASYNC", progress[0]);
+        downloadListeners.onDataUpdate(true);
         mProgressDialog.setProgress(Integer.parseInt(progress[0]));
         //mProgressDialog.show();
     }
@@ -154,4 +175,13 @@ public class DownloadFiles extends AsyncTask<String,String,String>{
         context.startActivity(Intent.createChooser(intent, "Open folder"));
     }
 
+    @Override
+    public void onDataUpdate(boolean flag) {
+
+    }
+
+    @Override
+    public void donotNeedtoDownload(String path) {
+
+    }
 }

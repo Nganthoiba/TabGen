@@ -94,6 +94,30 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
+
+
+    public void showImage(String path,String type){
+        File imgFile1 = new  File(path);
+
+        if(imgFile1.exists()){
+            if(type.contains("IMAGE"))
+            {
+                Bitmap myBitmap = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(imgFile1.getAbsolutePath()),
+                        100, 100);
+//                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile1.getAbsolutePath());
+//                Bitmap myBitmap=ThumbnailUtils.createVideoThumbnail(imgFile1.getAbsolutePath(), MediaStore.Images.Thumbnails.MICRO_KIND);
+                imgFile.setImageBitmap(myBitmap);
+            }else if(type.contains("CAMERA")){
+                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile1.getAbsolutePath());
+                imgFile.setImageBitmap(myBitmap);
+            }else {
+                Bitmap bMap = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Video.Thumbnails.MICRO_KIND);
+                imgFile.setImageBitmap(bMap);
+            }
+
+
+        }
+    }
     public class UploadFile extends AsyncTask<Void, String, String>{
         URL connectURL;
         String serverRespMsg,file_upload_uri=null;
@@ -237,25 +261,6 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         }
     }//end of class UploadFile
 
-    public void showImage(String path,String type){
-        File imgFile1 = new  File(path);
-
-        if(imgFile1.exists()){
-            if(type.contains("IMAGE"))
-            {
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile1.getAbsolutePath());
-                imgFile.setImageBitmap(myBitmap);
-            }else if(type.contains("CAMERA")){
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile1.getAbsolutePath());
-                imgFile.setImageBitmap(myBitmap);
-            }else {
-                    Bitmap bMap = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Video.Thumbnails.MICRO_KIND);
-                    imgFile.setImageBitmap(bMap);
-                }
-
-
-        }
-    }
 
 
 }

@@ -14,10 +14,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="HCircle"
+        android:name=".AppController"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustResize|stateHidden">
-
+        <service
+            android:name="connectServer.FileInfoService"
+            android:exported="false" />
         <!--
         android:theme="@android:style/Theme.Translucent"
         android:theme="@style/AppTheme"
