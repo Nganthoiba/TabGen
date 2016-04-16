@@ -23,8 +23,8 @@ public class GetChannelDetails {
                 JSONArray jsonArray1 = jsonObj1.getJSONArray("team_list");
                 JSONArray jsonArray2 = jsonObj1.getJSONArray("channels");
                 for(int i=0;i<jsonArray1.length();i++){//for every item(team) in the team list
-                    JSONObject jsonObj2 = jsonArray1.getJSONObject(i);
-                    String teamName = jsonObj2.getString("team_name");//getting the team name
+                    //JSONObject jsonObj2 = jsonArray1.getJSONObject(i);
+                    String teamName = jsonArray1.getString(i);//getting the team name
 
                     JSONObject jsonObj3 = jsonArray2.getJSONObject(i);//getting json objects for channels
                     try {
