@@ -91,16 +91,16 @@
     <orderEntry type="library" exported="" name="android-support-v4" level="project" />
     <orderEntry type="library" exported="" name="httpmime-4.0.1" level="project" />
     <orderEntry type="library" exported="" name="picasso-2.5.0" level="project" />
-    <orderEntry type="library" exported="" name="apache-mime4j-0.6" level="project" />
     <orderEntry type="library" exported="" name="junit3.7" level="project" />
+    <orderEntry type="library" exported="" name="apache-mime4j-0.6" level="project" />
     <orderEntry type="library" exported="" name="FFmpegMediaMetadataRetriever-1.0.6" level="project" />
     <orderEntry type="library" exported="" name="httpcore-4.0.1 (1)" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="design-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.0.1" level="project" />
-    <orderEntry type="library" exported="" name="okhttp-2.5.0" level="project" />
     <orderEntry type="library" exported="" name="httpcore-4.0.1" level="project" />
+    <orderEntry type="library" exported="" name="okhttp-2.5.0" level="project" />
     <orderEntry type="library" exported="" name="CircularReveal-1.1.0" level="project" />
     <orderEntry type="library" exported="" name="okio-1.6.0" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.5" level="project" />
