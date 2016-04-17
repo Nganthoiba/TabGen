@@ -158,6 +158,11 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        /*Joining the Channel for the first time*/
+                        ConnectAPIs joinChannel = new ConnectAPIs("http://"+ip+":8065/api/v1/channels/"+channel_id+"/join",token);
+                        String joinChannelInfo = convertInputStreamToString(joinChannel.getData());
+                        System.out.println("Join Channel Result: "+joinChannelInfo);
+                        /*******************************************************************/
                         /*** Getting extra information about the current channel ***/
                         ConnectAPIs connApis = new ConnectAPIs("http://"+ip+":8065//api/v1/channels/"+channel_id+"/extra_info",token);
                         extra_info = convertInputStreamToString(connApis.getData());

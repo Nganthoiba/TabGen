@@ -82,18 +82,18 @@ public class FileAdapter extends BaseAdapter{
 
             ConnectAPIs connectAPIs = new ConnectAPIs("http://" + ip + ":8065/api/v1/files/get_info/" + file_info, token);
             InputStream isr = connectAPIs.getData();
-            String fileInfo;
+            String file_detail_Info;
             try {
 //                Log.v("VALUE"+)
                 //System.out.println("File Information: "+convertInputStreamToString(isr));
                 JSONObject jsonfileInfo = new JSONObject(connectAPIs.convertInputStreamToString(isr));
                 Log.v("JSONFILENAME", "JSONFILENAME::::" + jsonfileInfo);
-                String file_name = jsonfileInfo.getString("filename");
-                int lastOccurance = file_name.lastIndexOf('/');
-                only_filename = file_name.substring(lastOccurance + 1);
-                fileInfo = only_filename + " \n" + InpuStreamConversion.humanReadableByteCount(Long.parseLong(jsonfileInfo.getString("size")),true);
-                holder.file_details.setText(fileInfo);
-                Picasso.with(context).load("http://128.199.111.18:8065/api/v1/files/get/8uq5js8z6tdjmnwk7mw55uuhko/j7r9nopox7rrtfqdbcr3w66zih/9hixmccmsjnkdeoy6f3yo7kxbo/IMG_20160402_201804.jpg?session_token_index=1").resize(200,200).into(holder.imgDetails);
+                String file_path = jsonfileInfo.getString("filename");
+                int lastOccurance = file_path.lastIndexOf('/');
+                only_filename = file_path.substring(lastOccurance + 1);
+                file_detail_Info = only_filename + " \n" + InpuStreamConversion.humanReadableByteCount(Long.parseLong(jsonfileInfo.getString("size")),true);
+                holder.file_details.setText(file_detail_Info);
+                Picasso.with(context).load("http://"+ip+":8065/api/v1/files/get/"+file_info+"?session_token_index=1").resize(200, 200).into(holder.imgDetails);
             } catch (JSONException e) {
                 System.out.println("JSON Exception in FileAdapter: " + e.toString());
                 holder.file_details.setText(null);

@@ -40,6 +40,7 @@ public class ExpandableListDataPump {
         try {
             ConnectServer channelIdList = new ConnectServer("http://"+sp.getServerIP_Preference(context)+"/TabGenAdmin/getChannels.php"+
                     "?user_id="+user_id);
+            //I have changed new channel path
             String jsonStr = channelIdList.convertInputStreamToString(channelIdList.getData());
             //saving channel details in share preference
             sp.saveChannelPreference(context,jsonStr);

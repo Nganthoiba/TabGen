@@ -162,7 +162,7 @@ public class MainActivity extends Activity {
         protected String doInBackground(JSONObject... jObj){
             String result=null;
             String ip = sp.getServerIP_Preference(context);
-            GetTeamName getTeam = new GetTeamName();
+            /*GetTeamName getTeam = new GetTeamName();
             String team_details = getTeam.getTeamDetails(uname);
             if(team_details!=null) {
                 JSONObject jsonObject;
@@ -197,6 +197,20 @@ public class MainActivity extends Activity {
                         System.out.println("Unable to put team name:" + e.toString());
                         result = null;
                     }
+                }
+            }*/
+            team_name="organisation";
+            if(team_name!=null) {
+                System.out.println("Team name: " + team_name);
+                sp.saveTeamNamePreference(context, team_name);
+                try {
+                    jObj[0].put("name", team_name);
+                    cs = new ConnectServer("http://" + ip + ":8065/api/v1/users/login");
+                    is = cs.putData(jObj[0]);
+                    result = cs.convertInputStreamToString(is);
+                } catch (JSONException e) {
+                    System.out.println("Unable to put team name:" + e.toString());
+                    result = null;
                 }
             }
             return result;
