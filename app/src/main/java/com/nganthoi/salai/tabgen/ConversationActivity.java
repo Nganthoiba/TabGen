@@ -216,7 +216,7 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
         imgSentMessages=(ImageView)findViewById(R.id.imgSentMessages);
         imgSentMessages.setOnClickListener(this);
         reveal_items=(LinearLayout)findViewById(R.id.reveal_items);
-        channel_label = (TextView) toolbar.findViewById(R.id.channel_name);
+        channel_label = (TextView) findViewById(R.id.channel_name);
         channel_label.setText(channel_title);
         messageEditText = (EditText) findViewById(R.id.messageEditText);
         progressDialog = new ProgressDialog(context);

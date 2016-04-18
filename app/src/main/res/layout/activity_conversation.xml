@@ -28,18 +28,25 @@
                 android:src="@drawable/back"
                 android:paddingRight="10dp"
                 android:id="@+id/backButton"/>
+
+        </android.support.v7.widget.Toolbar>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#c7ccef">
             <TextView
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="3dp"
                 android:paddingTop="3dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:id="@+id/channel_name"
                 android:text="Channel"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
-        </android.support.v7.widget.Toolbar>
+                android:textColor="#4f60f4"
+                android:textSize="15sp" />
+        </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
 
     <!--<RelativeLayout
