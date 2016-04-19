@@ -8,20 +8,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="You are not authorized to use this service. Please consult the admin of the system."
+        android:text="You are not authorized to access this service. Please consult the system administrator."
         android:id="@+id/unauthorise_msg"
         android:layout_gravity="center_vertical"
         android:textSize="20sp"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/imageView2"
-        android:layout_toEndOf="@+id/imageView2" />
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/imageView2"
-        android:src="@drawable/alert_icon_red"
+        android:background="@drawable/edittext_style"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#f63939"
+        android:textColorHighlight="#f9d60e"
+        android:textStyle="normal|italic"
+        android:typeface="serif"
+        android:textAlignment="gravity"
+        android:drawableLeft="@drawable/alert"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <!--<ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/alert"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />-->
 </RelativeLayout>

@@ -12,7 +12,8 @@
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/headerBar">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbarConversation"
@@ -25,7 +26,7 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/back"
+                android:src="@android:drawable/ic_menu_revert"
                 android:paddingRight="10dp"
                 android:id="@+id/backButton"/>
 
@@ -33,7 +34,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#c7ccef">
+            android:background="?attr/colorPrimaryDark">
             <TextView
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
@@ -41,28 +42,24 @@
                 android:paddingTop="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:gravity="left"
                 android:id="@+id/channel_name"
                 android:text="Channel"
-                android:textColor="#4f60f4"
-                android:textSize="15sp" />
+                android:textColor="#eff0fa"
+                android:textSize="18sp" />
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <!--<RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </RelativeLayout>-->
-    <include layout="@layout/content_conversation" />
+    <include
+        layout="@layout/content_conversation" />
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="?android:actionBarSize"
-        android:layout_alignParentBottom="true"
-        layout="@layout/attachement_layout"/>
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="?android:actionBarSize"
+            android:layout_alignParentBottom="true"
+            layout="@layout/attachement_layout"/>
     </RelativeLayout>
 
     <!--<android.support.design.widget.FloatingActionButton android:id="@+id/fab"

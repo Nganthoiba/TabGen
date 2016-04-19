@@ -55,9 +55,9 @@ public class MainActivity extends Activity {
         password = (EditText) findViewById(R.id.password);
         //show_password = (CheckBox) findViewById(R.id.show_password);
         //server_ip="128.199.111.18";
-        //server_ip="10.0.2.2";
+        server_ip="10.0.2.2";
         //server_ip="54.169.129.177";
-        server_ip = "52.77.103.88";
+        //server_ip = "52.77.103.88";
         //forgotPassword.setPaintFlags(forgotPassword.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
         //forgotPassword.setText(Html.fromHtml("<u><i>Forgot Password ?</i></u>"));
 
@@ -200,6 +200,7 @@ public class MainActivity extends Activity {
                 }
             }*/
             team_name="organisation";
+            sp.saveTeamNamePreference(context, team_name);
             if(team_name!=null) {
                 System.out.println("Team name: " + team_name);
                 sp.saveTeamNamePreference(context, team_name);

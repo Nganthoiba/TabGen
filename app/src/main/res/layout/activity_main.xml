@@ -22,7 +22,7 @@
         android:focusableInTouchMode="true"
         android:layout_gravity="center_vertical"
         android:fillViewport="true"
-    android:background="@drawable/bg_scr">
+    android:background="@drawable/bg_screen_small">
 
     <EditText
             android:layout_width="match_parent"
@@ -81,6 +81,14 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="200dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/hcircle_logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

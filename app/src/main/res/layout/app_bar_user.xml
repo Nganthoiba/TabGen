@@ -16,11 +16,12 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
-            <!--android:background="?attr/colorPrimary"-->
+            <!--android:background="?attr/colorPrimary"
+                ?attr/actionBarSize-->
             <!--<TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -43,6 +44,7 @@
                     android:paddingBottom="1dp"
                     app:tabGravity="center"
                     app:tabMode="scrollable"
+                    app:tabIndicatorHeight="4dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true">
