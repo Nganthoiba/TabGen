@@ -54,8 +54,8 @@ public class MainActivity extends Activity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         //show_password = (CheckBox) findViewById(R.id.show_password);
-        //server_ip="128.199.111.18";
-        server_ip="10.0.2.2";
+        server_ip="128.199.111.18";
+        //server_ip="10.0.2.2";
         //server_ip="54.169.129.177";
         //server_ip = "52.77.103.88";
         //forgotPassword.setPaintFlags(forgotPassword.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);

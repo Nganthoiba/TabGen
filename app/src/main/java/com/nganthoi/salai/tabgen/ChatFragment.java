@@ -7,6 +7,7 @@ package com.nganthoi.salai.tabgen;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -60,11 +61,11 @@ public class ChatFragment extends Fragment {
         //expandableListView.setIndicatorBounds(width - UIUtils.getPxFromDp(getActivity(), 40), width - UIUtils.getPxFromDp(getActivity(),20));
         //.setIndicatorBounds(width - UIUtils.getPxFromDp(getActivity(), 40), width - UIUtils.getPxFromDp(getActivity(),20));
 
-        showChatLists(layoutInflater);
+        showChatLists();
         return chatView;
     }
 
-    public void showChatLists(LayoutInflater layoutInflater) {
+    public void showChatLists() {
         /*Setting chat list View*/
         expandableListDetail = ExpandableListDataPump.getData(chatView.getContext());
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
@@ -118,5 +119,12 @@ public class ChatFragment extends Fragment {
         // Convert the dps to pixels, based on density scale
         return (int) (pixels * scale + 0.5f);
     }
+
+    /*public class LoadChannels extends AsyncTask<View,Void,HashMap<String, List<String>>>{
+        @Override
+        protected HashMap<String, List<String>> doInBackground(View... chatView){
+            expandableListDetail = ExpandableListDataPump.getData(chatView.getContext());
+        }
+    }*/
 
 }

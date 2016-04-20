@@ -4,6 +4,6 @@
     android:layout_height="match_parent"
     android:id="@+id/my_custom_tab"
     android:textColor="#f2efef"
-    android:textSize="16sp"
+    android:textSize="13sp"
     android:fontFamily="@string/font_fontFamily_medium">
 </TextView>

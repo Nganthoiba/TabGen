@@ -57,27 +57,27 @@ public class ExpandableListDataPump {
                         channelList = new ArrayList<String>();
 
                         JSONObject jsonObj3 = jsonArray2.getJSONObject(i);//getting json objects for channels
+                        if(jsonObj3!=null) {
+                            try {
+                                JSONArray jsonArray3 = jsonObj3.getJSONArray(team_name);
 
-                        try {
-                            JSONArray jsonArray3 = jsonObj3.getJSONArray(team_name);
-
-                            if (jsonArray3.length() != 0 && jsonArray3 != null) {
-                                for (int j = 0; j < jsonArray3.length(); j++) {
-                                    JSONObject jsonObj4 = jsonArray3.getJSONObject(j);
-                                    if(jsonObj4!=null) {
-                                        channelList.add(jsonObj4.getString("Channel_name"));
-                                        System.out.println("Channel Name: " + jsonObj4.getString("Channel_name"));
+                                if (jsonArray3.length() != 0 && jsonArray3 != null) {
+                                    for (int j = 0; j < jsonArray3.length(); j++) {
+                                        JSONObject jsonObj4 = jsonArray3.getJSONObject(j);
+                                        if (jsonObj4 != null) {
+                                            channelList.add(jsonObj4.getString("Channel_name"));
+                                            System.out.println("Channel Name: " + jsonObj4.getString("Channel_name"));
+                                        } else {
+                                            channelList.add("NO CHANNEL AVAILABLE");
+                                            continue;
+                                        }
                                     }
-                                    else {
-                                        channelList.add("NO CHANNEL AVAILABLE");
-                                        continue;
-                                    }
-                                }
-                                expandableListDetail.put(team_name, channelList);
-                            } else channelList.add("No channel available");
-                        } catch (Exception e) {
-                            System.out.println("System crashes here. Unable to parse channel: \n" + e.toString());
-                            continue;
+                                    expandableListDetail.put(team_name, channelList);
+                                } else channelList.add("No channel available");
+                            } catch (Exception e) {
+                                System.out.println("System crashes here. Unable to parse channel: \n" + e.toString());
+                                continue;
+                            }
                         }
 
                     }
