@@ -109,7 +109,7 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
     private ArrayList<ChatMessage> chatHistory;
     private SharedPreference sharedPreference;
     private Context context=this;
-    private String channel_id="",user_id,token,last_timetamp="000000000",extra_info,copied_msg=null,channel_title;
+    private String channel_id="",user_id,token,last_timetamp="000000000",extra_info,users_info,copied_msg=null,channel_title;
     private String file_path=null;
     private String ip;
     private HttpURLConnection conn=null;
@@ -119,8 +119,8 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy' at 'h:mm a");
     private JSONArray filenames=null;// A JSON variable that contains list of file names returned from the mattermost APIs
     private ProgressDialog progressDialog;
-    private JSONObject extraInfoObj;
-    private JSONArray members;
+    private JSONObject extraInfoObj,all_users;
+    //private JSONArray members;
     private Activity activity=this;
     private ActionMode mActionMode;
     ChatConversationAdapter adapter;
@@ -164,7 +164,7 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
                         System.out.println("Join Channel Result: "+joinChannelInfo);
                         /*******************************************************************/
                         /*** Getting extra information about the current channel ***/
-                        ConnectAPIs connApis = new ConnectAPIs("http://"+ip+":8065//api/v1/channels/"+channel_id+"/extra_info",token);
+                        /*ConnectAPIs connApis = new ConnectAPIs("http://"+ip+":8065//api/v1/channels/"+channel_id+"/extra_info",token);
                         extra_info = convertInputStreamToString(connApis.getData());
                         System.out.println("Extra Information: "+extra_info);
                         try{
@@ -172,7 +172,18 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
                             members=extraInfoObj.getJSONArray("members");
                         }catch(Exception e){
                             System.out.println("unable to get user extra information");
+                        }*/
+                        /****New Code for Getting all user information from server********/
+                        ConnectAPIs getUsers = new ConnectAPIs("http://"+ip+":8065//api/v1/users/profiles",token);
+                        users_info = convertInputStreamToString(getUsers.getData());
+                        System.out.println("Users: "+users_info);
+                        try{
+                            all_users = new JSONObject(users_info);
                         }
+                        catch(Exception e){
+                            System.out.println("unable to get user information");
+                        }
+                        /********************************************************************/
                         new GetMessageHistoryTask().execute("http://"+ip+
                                 ":8065//api/v1/channels/"+channel_id+
                                 "/posts/0/60");
@@ -594,7 +605,7 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
 
     private String getUsernameById(String user_id){
         String username=null;
-        if(members!=null){
+        /*if(members!=null){
             try{
                 for(int i=0;i<members.length();i++){
                     JSONObject users = members.getJSONObject(i);
@@ -607,7 +618,22 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
                 System.out.println("Unable to get Username in getUsernameById: "+e.toString());
                 username=null;
             }
+        }*/
+        if(all_users!=null){
+            try{
+                JSONObject jobj = all_users.getJSONObject(user_id);
+                if(jobj.getString("first_name").length()!=0 && jobj.getString("first_name")!=null){
+                    username = jobj.getString("first_name");
+                }
+                else{
+                    username = jobj.getString("username");
+                }
+            }
+            catch(Exception e){
+                username = null;
+            }
         }
+        else username="Unknown";
         return username;
     }
     private void sendMyMessage(JSONObject jsonMsg) {

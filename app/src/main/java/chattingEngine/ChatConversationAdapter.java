@@ -174,6 +174,14 @@ public class ChatConversationAdapter extends RecyclerView.Adapter<ChatConversati
             holder.loadingPanel.setVisibility(View.GONE);
             holder.llDocloadingPanel.setVisibility(View.GONE);
         }
+
+        holder.txtsender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("You have click on the sender");
+            }
+        });
+
         holder.imgDocDownloads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
