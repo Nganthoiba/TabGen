@@ -173,16 +173,7 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
                         }catch(Exception e){
                             System.out.println("unable to get user extra information");
                         }*/
-                        /****New Code for Getting all user information from server********/
-                        ConnectAPIs getUsers = new ConnectAPIs("http://"+ip+":8065//api/v1/users/profiles",token);
-                        users_info = convertInputStreamToString(getUsers.getData());
-                        System.out.println("Users: "+users_info);
-                        try{
-                            all_users = new JSONObject(users_info);
-                        }
-                        catch(Exception e){
-                            System.out.println("unable to get user information");
-                        }
+
                         /********************************************************************/
                         new GetMessageHistoryTask().execute("http://"+ip+
                                 ":8065//api/v1/channels/"+channel_id+
@@ -1020,10 +1011,21 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
         @Override
         protected void onPreExecute(){
             progressDialog.show();
+
         }
 
         @Override
         protected String doInBackground(String... messageUrl){
+            /****New Code for Getting all user information from server********/
+            ConnectAPIs getUsers = new ConnectAPIs("http://"+ip+":8065//api/v1/users/profiles",token);
+            users_info = convertInputStreamToString(getUsers.getData());
+            System.out.println("Users: " + users_info);
+            try{
+                all_users = new JSONObject(users_info);
+            }
+            catch(Exception e){
+                System.out.println("unable to get user information");
+            }
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
             try{
